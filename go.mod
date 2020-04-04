@@ -1,4 +1,4 @@
-module github.com/slack-go/slack
+module github.com/CedricFinance/slack
 
 require (
 	github.com/go-test/deep v1.0.4
