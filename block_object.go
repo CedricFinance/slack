@@ -184,9 +184,10 @@ func NewConfirmationBlockObject(title, text, confirm, deny *TextBlockObject) *Co
 //
 // More Information: https://api.slack.com/reference/messaging/composition-objects#option
 type OptionBlockObject struct {
-	Text  *TextBlockObject `json:"text"`
-	Value string           `json:"value"`
-	URL   string           `json:"url,omitempty"`
+	Text        *TextBlockObject `json:"text"`
+	Value       string           `json:"value"`
+	URL         string           `json:"url,omitempty"`
+	Description *TextBlockObject `json:"description,omitempty"`
 }
 
 // NewOptionBlockObject returns an instance of a new Option Block Element
@@ -200,6 +201,12 @@ func NewOptionBlockObject(value string, text *TextBlockObject) *OptionBlockObjec
 // validateType enforces block objects for element and block parameters
 func (s OptionBlockObject) validateType() MessageObjectType {
 	return motOption
+}
+
+// WithDescription adds a description to the option object
+func (s *OptionBlockObject) WithDescription(description *TextBlockObject) *OptionBlockObject {
+	s.Description = description
+	return s
 }
 
 // OptionGroupBlockObject Provides a way to group options in a select menu.
